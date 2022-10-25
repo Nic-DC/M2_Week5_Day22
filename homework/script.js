@@ -59,28 +59,37 @@ const authorName = "Nic";
 
 const mainBlogSection = document.querySelector(".blog-main");
 const blogPagination = document.querySelector(".blog-pagination");
+const newerButton = document.querySelector("main .blog-pagination a[tabindex='-1']");
+newerButton.ariaDisabled = false;
+newerButton.classList.toggle("disabled");
 
-const divBlog = document.createElement("div");
-divBlog.classList.add("blog-post");
+const createNewBlogPost = function () {
+  const divBlog = document.createElement("div");
+    divBlog.classList.add("blog-post");
+    divBlog.classList.add(`nr${}`)
 
-const headerBlog = document.createElement("h2");
-headerBlog.classList.add("blog-post-title");
-headerBlog.innerText = `Blog post ${mainBlogSection.children.length - 2 + 1}`;
+  const headerBlog = document.createElement("h2");
+  headerBlog.classList.add("blog-post-title");
+  headerBlog.innerText = `Blog post ${mainBlogSection.children.length - 2 + 1}`;
 
-const paragraphBlogAuthor = document.createElement("p");
-paragraphBlogAuthor.classList.add("blog-post-meta");
-paragraphBlogAuthor.innerHTML = `${today} by <a href="#">${authorName}</a></p>`;
+  const paragraphBlogAuthor = document.createElement("p");
+  paragraphBlogAuthor.classList.add("blog-post-meta");
+  paragraphBlogAuthor.innerHTML = `${today} by <a href="#">${authorName}</a></p>`;
 
-const paragraphBlog = document.createElement("p");
-paragraphBlog.innerText = `
-            um sociis natoque penatibus et magnis dis parturient montes, 
-            nascetur ridiculus mus. Aenean lacinia
-            bibendum nulla sed consectet`;
+  const paragraphBlog = document.createElement("p");
+  paragraphBlog.innerText = `
+                um sociis natoque penatibus et magnis dis parturient montes, 
+                nascetur ridiculus mus. Aenean lacinia
+                bibendum nulla sed consectet`;
 
-divBlog.appendChild(headerBlog);
-divBlog.appendChild(paragraphBlogAuthor);
-divBlog.appendChild(paragraphBlog);
-mainBlogSection.insertBefore(divBlog, blogPagination);
+  divBlog.appendChild(headerBlog);
+  divBlog.appendChild(paragraphBlogAuthor);
+  divBlog.appendChild(paragraphBlog);
+  mainBlogSection.insertBefore(divBlog, blogPagination);
+};
+createNewBlogPost();
+newerButton.addEventListener("click", createNewBlogPost);
+
 // const showBlogPagination = function () {
 //   blogPagination.hidden = false;
 // };
@@ -110,13 +119,14 @@ const olderBtn = document.querySelector(".btn-outline-primary ");
 const removeLastBlog = function () {
   let removeChild;
   //allBlogs.removeChild(allBlogs.lastChild);
-  for (let i = 0; i < allBlogs.length; i++) {
-    if (i === allBlogs.length - 1) {
-      console.log({ i });
-      removeChild = allElemInBlogSection.removeChild(allBlogs[i]);
-    }
-  }
-  console.log(removeChild);
+  //   for (let i = 0; i < allBlogs.length; i++) {
+  //     if (i === allBlogs.length - 1) {
+  //       console.log({ i });
+  //       removeChild = allElemInBlogSection.removeChild(allBlogs[i]);
+  //     }
+  //   }
+  //   console.log(removeChild);
+  allElemInBlogSection;
 };
 olderBtn.addEventListener("click", removeLastBlog);
 
@@ -125,9 +135,25 @@ Write a JavaScript functionality that will create an alert with the name of the 
 */
 
 const authorNameBlog = document.querySelectorAll(".blog-post-meta a");
-for (let i of authorNameBlog) {
-  // i.style.backgroundColor = "red";
-}
+const alertAuthorOnHover = function () {
+  for (let author of authorNameBlog) {
+    // i.style.backgroundColor = "red";
+    console.dir({ author });
+    author.addEventListener("mouseover", (event) => {
+      alert(event.currentTarget.innerText);
+    });
+  }
+};
+alertAuthorOnHover();
+
 /* 
-EXTRA Write a JavaScript functionality that will remove the corresponding parent card from the DOM, upon clicking on their “Continue reading” link 
+EXTRA Write a JavaScript functionality that will remove the corresponding parent card from the DOM, 
+upon clicking on their “Continue reading” link 
 */
+const continueReading = document.querySelector(".jumbotron a[href^='#']");
+continueReading.addEventListener("click", (event) => {
+  const biggerParentElem = event.target.parentNode.parentNode;
+  const parentElem = event.target.parentNode;
+  let removedParent = biggerParentElem.removeChild(parentElem);
+  console.dir(removedParent);
+});
