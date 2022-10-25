@@ -1,3 +1,89 @@
-body {
-  background-color: red;
+/* 
+Write a selector to target the h1 in the first “hero” section
+*/
+.jumbotron h1 {
+  border: 1px solid black;
+}
+
+/* 
+Write a selector to target every children of the navbar
+*/
+.nav span {
+  border: 1px solid black;
+}
+/* 
+Write a selector to target the “continue reading…” inside the jumbotron
+*/
+.jumbotron a[href^="#"] {
+  border: 1px solid black;
+}
+/* 
+Write a selector to target the first blogpost
+*/
+/* first featured blogpost */
+.jumbotron + div > div:nth-child(1) {
+  border: 1px solid black;
+}
+
+/* first blogpost */
+main h3 + .blog-post {
+  border: 1px solid black;
+}
+/* 
+Write a selector to target the first blogpost <hr> and turn it red
+*/
+main h3 + .blog-post hr {
+  border-top: 2px dashed red;
+}
+/* 
+Write a selector to target the “even” links in the navbar
+*/
+nav span:nth-child(even) {
+  border-top: 2px dashed red;
+}
+/* 
+Write a selector to target all the <li> into the first ordered-list in the sidebar ( Archives )
+*/
+aside div:nth-child(2) li {
+  border: 1px solid black;
+}
+
+/* 
+Write a selector to target the second blog-post author
+*/
+main h3 + .blog-post + div .blog-post-meta a {
+  border: 1px solid black;
+}
+/* 
+Write a selector to target the second <li> in the third blog-post unordered-list
+*/
+main h3 ~ div:nth-child(4) li:nth-child(2) {
+  border: 1px solid black;
+}
+/* 
+
+/* 
+Write a selector to target the “back to top” link you can find at the bottom-right corner
+*/
+footer + a {
+  border: 1px solid black;
+}
+
+/* 
+Write a selector to target the “Newer” button at the bottom
+*/
+main .blog-pagination a[tabindex="-1"] {
+  border: 5px solid black;
+}
+
+/* 
+Write a selector to target the footer’s second link
+*/
+footer a[href="https://twitter.com/mdo"]
+{
+  border: 1px solid black;
+}
+
+.blog-post-meta {
+  border: 5px solid black;
 }
