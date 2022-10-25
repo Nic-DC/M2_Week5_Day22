@@ -65,8 +65,9 @@ newerButton.classList.toggle("disabled");
 
 const createNewBlogPost = function () {
   const divBlog = document.createElement("div");
-    divBlog.classList.add("blog-post");
-    divBlog.classList.add(`nr${}`)
+  divBlog.classList.add("blog-post");
+  divBlog.classList.add(`nr${mainBlogSection.length - 2 + 1}`);
+  console.dir({ divBlog });
 
   const headerBlog = document.createElement("h2");
   headerBlog.classList.add("blog-post-title");
@@ -119,14 +120,13 @@ const olderBtn = document.querySelector(".btn-outline-primary ");
 const removeLastBlog = function () {
   let removeChild;
   //allBlogs.removeChild(allBlogs.lastChild);
-  //   for (let i = 0; i < allBlogs.length; i++) {
-  //     if (i === allBlogs.length - 1) {
-  //       console.log({ i });
-  //       removeChild = allElemInBlogSection.removeChild(allBlogs[i]);
-  //     }
-  //   }
-  //   console.log(removeChild);
-  allElemInBlogSection;
+  for (let i = 0; i < allBlogs.length; i++) {
+    if (i === allBlogs.length - 1) {
+      console.log({ i });
+      removeChild = allElemInBlogSection.removeChild(allBlogs[i]);
+    }
+  }
+  console.log(removeChild);
 };
 olderBtn.addEventListener("click", removeLastBlog);
 
