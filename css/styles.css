@@ -1,0 +1,44 @@
+#container {
+  max-width: 600px;
+  margin-inline: auto;
+
+  padding-inline: 20px;
+
+  text-align: center;
+  /* This is the same:
+    margin-right: auto;
+    margin-left: auto;
+  */
+}
+
+#container ol#scoreboard-list {
+  padding-left: 0px;
+}
+
+#container li.scoreboard-line {
+  text-align: left;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  list-style: none;
+
+  /* Display flex tells the browser that
+    the CHILDREN of this element will be displayed
+    according to the flex properties we set.
+  */
+  display: flex;
+
+  /* Flex property to manage
+  how elements are positioned on the line.
+  */
+  justify-content: space-between;
+}
+
+.good-score {
+  background-color: lime;
+}
+
+.bad-score {
+  background-color: tomato;
+}
